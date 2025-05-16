@@ -8,6 +8,14 @@
   background: deeppink;
   color: white;
 }
+/* 스크롤바 제거 */
+body {
+  overflow: hidden; /* 또는 auto */
+  scrollbar-width: none;  /* Firefox */
+}
+body::-webkit-scrollbar {
+  display: none !important;  /* Chrome, Safari */
+}
 
 body {
 	font-family: "Futura-Pt", sans-serif;
@@ -17,7 +25,7 @@ body {
 	margin: 0;
 	padding: 0;
 	text-align: justify;
-
+	height: 100vh;
 }
 
 [lang="ko"] {
@@ -92,7 +100,7 @@ header {
 	position: absolute;
 	margin: 0 !important;
 	padding: 0 !important;
-	width: 65%;
+	width: 37%;
 	text-align: center;
 	object-fit: contain;
 }
@@ -106,8 +114,8 @@ header {
 /* 한국어+공통 */
 .container-kr {
 	display: grid;
-	grid-template-columns: 1fr 1fr 2fr 2fr 2fr 2fr;
-	height: calc(100vh - 75px) !important;
+	grid-template-columns: 2fr 2fr 2fr 2fr 2fr;
+	height: calc(100vh - 80px) !important;
 }
 .header1,
 .header2,
@@ -130,16 +138,79 @@ header {
 }
 
 .container5 {
+	position: relative;
 	padding: 5px;
-	display: flex;
-	align-items: flex-end;
+}
+
+.fly-text {
+	position: absolute;
+}
+#fly-text1 {
+	margin-top: 210px;
+	margin-left: 0;
+}
+#fly-text2 {
+	margin-top: 210px;
+	margin-left: 15px;
+}
+#fly-text3 {
+	margin-top: 260px;
+	margin-left: 35px;
+}
+#fly-text4 {
+	margin-top: 150px;
+	margin-left: 100px;
+}
+#fly-text5 {
+	margin-top: 100px;
+	margin-left: 115px;
+}
+#fly-text6 {
+	margin-top: 65px;
+	margin-left: 125px;
+}
+#fly-text7 {
+	margin-top: 65px;
+	margin-left: 140px;
+}
+#fly-text8 {
+	margin-top: 125px;
+	margin-left: 170px;
+}
+#fly-text9 {
+	margin-top: 470px;
+	margin-left: 270px;
+}
+#fly-text10 {
+	margin-top: 470px;
+	margin-left: 300px;
+}
+#fly-text11 {
+	margin-top: 470px;
+	margin-left: 400px;
+}
+#fly-text12 {
+	margin-top: 450px;
+	margin-left: 430px;
+}
+#fly-text13 {
+	margin-top: 390px;
+	margin-left: 490px;
+}
+#fly-text14 {
+	margin-top: 390px;
+	margin-left: 520px;
+}
+#fly-text15 {
+	margin-top: 390px;
+	margin-left: 530px;
 }
 
 /* 영어만 */
 .container-en {
 	display: grid;
-	grid-template-columns: 1fr 1fr 2fr 2fr 2fr 2fr;
-	height: calc(100vh - 66px);
+	grid-template-columns: 2fr 2fr 2fr 2fr 2fr;
+	height: calc(100dvh - 80px);
 }
 
 

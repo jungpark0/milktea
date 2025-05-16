@@ -1,3 +1,5 @@
+
+
 // 디데이 영어
 
 document.addEventListener("DOMContentLoaded", function () {
@@ -72,8 +74,8 @@ resizeCanvas();
 // 원 객체 클래스
 class Circle {
   constructor() {
-    const minX = canvas.width * 0.35;  // x 최소값 (캔버스 폭의 20%)
-    const maxX = canvas.width * 0.65;  // x 최대값 (캔버스 폭의 80%)
+    const minX = canvas.width * 0.4;  // x 최소값 (캔버스 폭의 20%)
+    const maxX = canvas.width * 0.6;  // x 최대값 (캔버스 폭의 80%)
 
     this.x = Math.random() * (maxX - minX) + minX; // x 위치 랜덤
     this.y = canvas.height - imageHeight; // 이미지 위에서 시작
@@ -100,7 +102,7 @@ class Circle {
     ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
     ctx.fillStyle = `rgba(255, 255, 255, ${this.opacity})`; // 흰색, 투명도 반영
     ctx.strokeStyle = "black"; // 테두리 색
-    ctx.lineWidth = 0.7;         // 테두리 두께 (고정)
+    ctx.lineWidth = 0.8;         // 테두리 두께 (고정)
     ctx.fill();
     ctx.stroke();
     ctx.closePath();
@@ -112,7 +114,7 @@ class Circle {
 }
 
 let circles = [];             // 원 저장 배열
-let maxCircles = 20;          // 최대 원 개수 유지
+let maxCircles = 15;          // 최대 원 개수 유지
 let interval = 1000;           // 새로운 원 생성 딜레이(ms 단위)
 
 // 초기 원들 먼저 10개 생성
