@@ -88,7 +88,7 @@ header {
 }
 
 /*컨테이너1 이미지*/
-.container1 {
+.container2 {
 	position: relative;
   display: flex;
   flex-direction: column;
@@ -100,7 +100,7 @@ header {
 	position: absolute;
 	margin: 0 !important;
 	padding: 0 !important;
-	width: 37%;
+	width: 65%;
 	text-align: center;
 	object-fit: contain;
 }
@@ -114,9 +114,20 @@ header {
 /* 한국어+공통 */
 .container-kr {
 	display: grid;
-	grid-template-columns: 2fr 2fr 2fr 2fr 2fr;
+	grid-template-columns: 1fr 1fr 2fr 2fr 4fr;
 	height: calc(100vh - 80px) !important;
 }
+@media (max-width:1024px) {
+	.container-kr {
+	display: grid;
+	grid-template-columns: 2fr 2fr 4fr;
+}
+	.container1,
+	.container2 {
+		display: none;
+	}
+}
+
 .header1,
 .header2,
 .header3,
@@ -146,70 +157,257 @@ header {
 	position: absolute;
 }
 #fly-text1 {
-	margin-top: 210px;
+	margin-top: 150px;
 	margin-left: 0;
 }
 #fly-text2 {
-	margin-top: 210px;
+	margin-top: 180px;
 	margin-left: 15px;
 }
 #fly-text3 {
-	margin-top: 260px;
-	margin-left: 35px;
+	margin-top: 190px;
+	margin-left: 30px;
+}
+#fly-m1 {
+  transform: rotate(340deg);
+	margin-top: 190px;
+	margin-left: 50px;
 }
 #fly-text4 {
-	margin-top: 150px;
-	margin-left: 100px;
+	margin-top: 175px;
+	margin-left: 70px;
 }
 #fly-text5 {
 	margin-top: 100px;
 	margin-left: 115px;
 }
 #fly-text6 {
-	margin-top: 65px;
+	margin-top: 75px;
 	margin-left: 125px;
 }
 #fly-text7 {
-	margin-top: 65px;
-	margin-left: 140px;
+	margin-top: 55px;
+	margin-left: 160px;
 }
-#fly-text8 {
-	margin-top: 125px;
-	margin-left: 170px;
+#fly-m2 {
+
+  transform: rotate(0deg);
+	margin-top: 55px;
+	margin-left: 175px;
 }
-#fly-text9 {
-	margin-top: 470px;
-	margin-left: 270px;
+#fly-m3 {
+  transform: rotate(5deg);
+	margin-top: 56px;
+	margin-left: 187px;
 }
-#fly-text10 {
-	margin-top: 470px;
-	margin-left: 300px;
+#fly-m4 {
+  transform: rotate(25deg);
+	margin-top: 60px;
+	margin-left: 201.5px;
 }
 #fly-text11 {
-	margin-top: 470px;
-	margin-left: 400px;
+	margin-top: 110px;
+	margin-left: 240px;
 }
 #fly-text12 {
-	margin-top: 450px;
-	margin-left: 430px;
+	margin-top: 140px;
+	margin-left: 255px;
 }
 #fly-text13 {
-	margin-top: 390px;
-	margin-left: 490px;
+	margin-top: 255px;
+	margin-left: 300px;
 }
 #fly-text14 {
-	margin-top: 390px;
-	margin-left: 520px;
+	margin-top: 275px;
+	margin-left: 335px;
+}
+#fly-m5 {
+	margin-top: 275px;
+	margin-left: 350px;
+}
+#fly-m6 {
+	transform: rotate(347deg);
+	margin-top: 273px;
+	margin-left: 365px;
 }
 #fly-text15 {
-	margin-top: 390px;
-	margin-left: 530px;
+	margin-top: 250px;
+	margin-left: 405px;
+}
+#fly-text16 {
+	margin-top: 230px;
+	margin-left: 430px;
+}
+#fly-text17 {
+	margin-top: 180px;
+	margin-left: 465px;
+}
+#fly-text18 {
+	margin-top: 25px;
+	margin-left: 515px;
+}
+#fly-text19 {
+	margin-top: 0px;
+	margin-left: 520px;
+}
+
+#fly-text20 {
+  position: absolute;
+  top: 430px;
+  right: 5px;
+}
+#fly-text21 {
+  position: absolute;
+  top: 455px;
+  right: 10px;
+}
+#fly-text22 {
+  position: absolute;
+  top: 485px;
+  right: 35px;
+}
+#fly-m7 {
+  position: absolute;
+  top: 505px;
+  right: 52px;
+  transform: rotate(135deg);
+}
+#fly-m8 {
+  position: absolute;
+  top: 520px;
+  right: 70px;
+  transform: rotate(145deg);
+}
+#fly-m9 {
+  position: absolute;
+  top: 535px;
+  right: 135px;
+  transform: rotate(180deg);
+}
+
+#fly-text23 {
+  position: absolute;
+  top: 530px;
+  right: 175px;
+}
+#fly-text24 {
+  position: absolute;
+  top: 525px;
+  right: 215px;
+}
+#fly-text25 {
+  position: absolute;
+  top: 465px;
+  right: 275px;
+}
+#fly-text26 {
+  position: absolute;
+  top: 390px;
+  right: 255px;
+}
+#fly-text27 {
+  position: absolute;
+  top: 370px;
+  right: 235px;
+}
+#fly-m10 {
+  position: absolute;
+  top: 358px;
+  right: 210px;
+  transform: rotate(345deg);
+}
+#fly-m11 {
+  position: absolute;
+  top: 355px;
+  right: 195px;
+  transform: rotate(355deg);
+}
+#fly-m12 {
+  position: absolute;
+  top: 360px;
+  right: 145px;
+  transform: rotate(17deg);
+}
+#fly-text28 {
+  position: absolute;
+  top: 395px;
+  right: 110px;
+}
+#fly-text29 {
+  position: absolute;
+  top: 433px;
+  right: 95px;
+}
+#fly-text30 {
+  position: absolute;
+  top: 510px;
+  right: 120px;
+}
+#fly-m13 {
+  position: absolute;
+  top: 535px;
+  right: 129px;
+  transform: rotate(112deg);
+}
+#fly-text31 {
+  position: absolute;
+  top: 565px;
+  right: 145px;
+}
+#fly-m14 {
+  position: absolute;
+  top: 590px;
+  right: 165px;
+  transform: rotate(135deg);
+}
+#fly-m15 {
+  position: absolute;
+  top: 600px;
+  right: 175px;
+  transform: rotate(135deg);
+}
+#fly-text32 {
+  position: absolute;
+  top: 650px;
+  right: 225px;
+}
+#fly-text33 {
+  position: absolute;
+  top: 675px;
+  right: 255px;
+}
+#fly-text34 {
+  position: absolute;
+  top: 685px;
+  right: 270px;
+}
+#fly-m16 {
+  position: absolute;
+  top: 699px;
+  right: 370px;
+  transform: rotate(355deg);
+}
+#fly-m17 {
+  position: absolute;
+  top: 700px;
+  right: 385px;
+  transform: rotate(0deg);
+}
+#fly-text35 {
+  position: absolute;
+  top: 700px;
+  right: 405px;
+}
+
+.fly-text.highlight {
+  background-color: deeppink;
+  color: white;
 }
 
 /* 영어만 */
 .container-en {
 	display: grid;
-	grid-template-columns: 2fr 2fr 2fr 2fr 2fr;
+	grid-template-columns: 1fr 1fr 2fr 2fr 2fr 2fr;
 	height: calc(100dvh - 80px);
 }
 

@@ -1,5 +1,3 @@
-
-
 // 디데이 영어
 
 document.addEventListener("DOMContentLoaded", function () {
@@ -114,7 +112,7 @@ class Circle {
 }
 
 let circles = [];             // 원 저장 배열
-let maxCircles = 15;          // 최대 원 개수 유지
+let maxCircles = 17;          // 최대 원 개수 유지
 let interval = 1000;           // 새로운 원 생성 딜레이(ms 단위)
 
 // 초기 원들 먼저 10개 생성
@@ -157,4 +155,30 @@ function animate() {
 
 // 시작
 animate();
+
+//배경+글자 색 변경
+document.addEventListener("DOMContentLoaded", () => {
+  const flyTexts = document.querySelectorAll(".fly-text");
+  const delay = 500; // 각 글자 사이 간격
+
+  function runCycle() {
+    flyTexts.forEach((el, index) => {
+      setTimeout(() => {
+        el.classList.add("highlight");
+
+        // 0.5초 후 원래대로
+        setTimeout(() => {
+          el.classList.remove("highlight");
+        }, 500);
+      }, index * delay);
+    });
+
+    // 다음 사이클을 전체 딜레이 후 다시 실행
+    const totalDuration = flyTexts.length * delay + 500; // 전체 글자 다 돌고 마지막 0.5초 더해줌
+    setTimeout(runCycle, totalDuration);
+  }
+
+  runCycle(); // 첫 사이클 시작
+});
+
 
