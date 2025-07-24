@@ -49,58 +49,69 @@ document.addEventListener("DOMContentLoaded", function () {
 // 캔버스
 const canvas = document.getElementById("myCanvas");
 const ctx = canvas.getContext("2d");
+const image = document.getElementById("milkImage");
 
-const image = document.getElementById("milkImage"); // 이미지 ID 필요
+let imageHeight = 0;
 
-let imageHeight = 0; // 이미지 높이 저장용
-
-// 캔버스 크기와 이미지 높이 업데이트
 function resizeCanvas() {
-  canvas.width = canvas.parentElement.clientWidth;
-  canvas.height = canvas.parentElement.clientHeight;
+  const dpr = window.devicePixelRatio || 1;
+  const containerWidth = canvas.parentElement.clientWidth;
+  const containerHeight = canvas.parentElement.clientHeight;
+
+  // 실제 해상도 (픽셀 단위)
+  canvas.width = containerWidth * dpr;
+  canvas.height = containerHeight * dpr;
+
+  // CSS 사이즈 (화면에 보이는 크기)
+  canvas.style.width = containerWidth + "px";
+  canvas.style.height = containerHeight + "px";
+
+  // 고해상도 대응
+  ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+
   imageHeight = image.offsetHeight;
 }
+
 window.addEventListener("resize", () => {
   resizeCanvas();
-  // 리사이즈 후 기존 원들의 y값도 조정
-  circles.forEach(circle => {
-    circle.y = canvas.height - imageHeight;
+  const dpr = window.devicePixelRatio || 1;
+  circles.forEach((circle) => {
+    circle.y = canvas.height / dpr - imageHeight;
   });
 });
-resizeCanvas();
 
-// 원 객체 클래스
 class Circle {
   constructor() {
-    const minX = canvas.width * 0.4;  // x 최소값 (캔버스 폭의 20%)
-    const maxX = canvas.width * 0.6;  // x 최대값 (캔버스 폭의 80%)
+    const dpr = window.devicePixelRatio || 1;
+    const canvasDisplayWidth = canvas.width / dpr;
 
-    this.x = Math.random() * (maxX - minX) + minX; // x 위치 랜덤
-    this.y = canvas.height - imageHeight; // 이미지 위에서 시작
-    this.radius = 10 + Math.random() * 15;                     // 초기 반지름 (원 크기)
-    this.maxRadius = this.radius * 2;   // 최대 반지름 = 초기의 2.5배
-    this.dy = -0.7 - Math.random() * 0.15; // y축 속도 (위로 올라감, 0.7~0.85 사이 랜덤)
-    this.dr = 0.05 + Math.random() * 0.05;  // 반지름 증가 속도 (0.05~0.1)
-    this.opacity = 1;                     // 초기 투명도
-    this.fadeRate = 0.0005;                // 투명도 감소 속도
+    const minX = canvasDisplayWidth * 0.4;
+    const maxX = canvasDisplayWidth * 0.6;
+
+    this.x = Math.random() * (maxX - minX) + minX;
+    this.y = canvas.height / dpr - imageHeight;
+    this.radius = 10 + Math.random() * 15;
+    this.maxRadius = this.radius * 2;
+    this.dy = -0.7 - Math.random() * 0.15;
+    this.dr = 0.05 + Math.random() * 0.05;
+    this.opacity = 1;
+    this.fadeRate = 0.0005;
   }
 
   update() {
     this.y += this.dy;
-
     if (this.radius < this.maxRadius) {
       this.radius += this.dr;
     }
-
     this.opacity -= this.fadeRate;
   }
 
   draw(ctx) {
     ctx.beginPath();
     ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
-    ctx.fillStyle = `rgba(255, 255, 255, ${this.opacity})`; // 흰색, 투명도 반영
-    ctx.strokeStyle = "black"; // 테두리 색
-    ctx.lineWidth = 0.8;         // 테두리 두께 (고정)
+    ctx.fillStyle = `rgba(255, 255, 255, ${this.opacity})`;
+    ctx.strokeStyle = "black";
+    ctx.lineWidth = 1;
     ctx.fill();
     ctx.stroke();
     ctx.closePath();
@@ -111,18 +122,18 @@ class Circle {
   }
 }
 
-let circles = [];             // 원 저장 배열
-let maxCircles = 17;          // 최대 원 개수 유지
-let interval = 1000;           // 새로운 원 생성 딜레이(ms 단위)
+let circles = [];
+const maxCircles = 17;
+const interval = 1200;
 
-// 초기 원들 먼저 10개 생성
-for (let i = 0; i < maxCircles; i++) {
-  setTimeout(() => {
-    circles.push(new Circle());
-  }, i * interval); // 순차적으로 딜레이 주며 생성
+function addInitialCircles() {
+  for (let i = 0; i < maxCircles; i++) {
+    setTimeout(() => {
+      circles.push(new Circle());
+    }, i * interval);
+  }
 }
 
-// 매 프레임마다 실행
 function animate() {
   ctx.clearRect(0, 0, canvas.width, canvas.height);
 
@@ -131,54 +142,47 @@ function animate() {
   circles.forEach((circle) => {
     circle.update();
     circle.draw(ctx);
-
-    // 사라졌으면 새로운 원 예약
-    if (!circle.isVisible()) {
-      newCirclesToAdd++;
-    }
+    if (!circle.isVisible()) newCirclesToAdd++;
   });
 
-  // 살아 있는 원만 유지
   circles = circles.filter((circle) => circle.isVisible());
 
-  // 사라진 개수만큼 interval 간격으로 하나씩 생성
   for (let i = 0; i < newCirclesToAdd; i++) {
     setTimeout(() => {
       if (circles.length < maxCircles) {
         circles.push(new Circle());
       }
-    }, i * interval); // 딜레이를 주고 순차 생성
+    }, i * interval);
   }
 
   requestAnimationFrame(animate);
 }
 
 // 시작
+resizeCanvas();
+addInitialCircles();
 animate();
 
-//배경+글자 색 변경
+
+
+// 배경+글자 색 변경
 document.addEventListener("DOMContentLoaded", () => {
   const flyTexts = document.querySelectorAll(".fly-text");
-  const delay = 500; // 각 글자 사이 간격
+  const delay = 500;
 
   function runCycle() {
     flyTexts.forEach((el, index) => {
       setTimeout(() => {
         el.classList.add("highlight");
-
-        // 0.5초 후 원래대로
         setTimeout(() => {
           el.classList.remove("highlight");
         }, 500);
       }, index * delay);
     });
 
-    // 다음 사이클을 전체 딜레이 후 다시 실행
-    const totalDuration = flyTexts.length * delay + 500; // 전체 글자 다 돌고 마지막 0.5초 더해줌
+    const totalDuration = flyTexts.length * delay + 500;
     setTimeout(runCycle, totalDuration);
   }
 
-  runCycle(); // 첫 사이클 시작
+  runCycle();
 });
-
-
