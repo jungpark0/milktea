@@ -415,7 +415,21 @@ header {
 
 
 
+.no-mobile {
+  display: none;
+}
 
-
-
-
+@media (max-width: 767px) {
+  .main-content {
+    display: none;
+  }
+  .no-mobile {
+    height: 100%;
+    display: flex !important;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+    color: black;
+  }
+}
